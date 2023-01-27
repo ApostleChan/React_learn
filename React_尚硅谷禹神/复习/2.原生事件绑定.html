@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>state属性</title>
+    <!-- 加载 React。-->
+    <!-- 注意: 部署时，将 "development.js" 替换为 "production.min.js"。-->
+    <!-- 引入react核心库 -->
+    <script src="../js/react.min.js"></script>
+    <!-- 引入babel, 用于将jsx转为js -->
+    <script src="../js/reactDOM.min.js"></script>
+    <script src="../js/babel.min.js"></script>
+</head>
+
+<body>
+    <!-- 准备好一个容器 -->
+    <div id="root">
+        <button id="btn1">按钮1</button>
+        <button id="btn2">按钮2</button>
+        <button id="btn3">按钮3</button>
+    </div>
+
+    <script type="text/babel"> /*此处一定要写babel*/
+        const btn1 = document.getElementById('btn1')
+        btn1.addEventListener('click', ()=>{
+            alert('按钮1被点击了')
+        })
+
+        
+
+    </script>
+
+</body>
+
+</html>

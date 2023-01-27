@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>jsx遍历</title>
+    <!-- 加载 React。-->
+    <!-- 注意: 部署时，将 "development.js" 替换为 "production.min.js"。-->
+    <!-- 引入react核心库 -->
+    <script src="../js/react.min.js"></script>
+    <!-- 引入babel, 用于将jsx转为js -->
+    <script src="../js/reactDOM.min.js"></script>
+    <script src="../js/babel.min.js"></script>
+</head>
+
+<body>
+    <!-- 准备好一个容器 -->
+    <div id="root">
+
+    </div>
+
+    <script type="text/babel"> /*此处一定要写babel*/
+        const myId = "atguigu";
+        const myData = 'Hello, react!';
+        const data = ['vue', 'react']
+        // 1.创建虚拟DOM
+        const VDOM = (
+            <div id={myId}>
+                <h1>{myData}</h1>
+                <ul>
+                    {
+                        data.map((item, index)=>{
+                            return <li key={index}>{item}</li>
+                        })
+                    }
+                </ul>
+            </div>
+
+            
+        )
+        // 2. 渲染虚拟DOM到页面
+        ReactDOM.render(VDOM, document.getElementById('root'));
+
+        /*
+            Jsx语法规则：
+            1. 定义虚拟DOM时，不要写引号。
+            2. 标签中混入JS表达式时要用{}。
+            3. 样式的类名指定不要用class，要用className。
+            4. 内联样式，要用style={{key:value}}的形式去写。
+            5. 只有一个根标签 
+            6. 标签必须闭合
+            7. 标签首字母
+                （1）若小写字母开头，则将该标签转为HTML中同名元素，若HTML标签中无对应的同名元素，则报错
+                （2）若大写字母开头，react就去渲染对应的组件，若组件没有定义，则报错。
+        */
+
+    </script>
+
+</body>
+
+</html>

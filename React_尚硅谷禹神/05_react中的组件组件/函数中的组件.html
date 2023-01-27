@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>jsx遍历</title>
+    <!-- 加载 React。-->
+    <!-- 注意: 部署时，将 "development.js" 替换为 "production.min.js"。-->
+    <!-- 引入react核心库 -->
+    <script src="../js/react.min.js"></script>
+    <!-- 引入babel, 用于将jsx转为js -->
+    <script src="../js/reactDOM.min.js"></script>
+    <script src="../js/babel.min.js"></script>
+</head>
+
+<body>
+    <!-- 准备好一个容器 -->
+    <div id="root">
+
+    </div>
+
+    <script type="text/babel"> /*此处一定要写babel*/
+        // 1. 创建函数式组件
+        function MyComponent(){
+            console.log(this) //undefined,因为babel编译后开启了严格模式
+            return <h2>我是用函数定义的组件</h2>
+        }
+        // 2. 渲染组件到页面
+        ReactDOM.render(<MyComponent/>, document.getElementById('root'));
+
+        /*
+            执行了 ReactDOM.render(<MyComponent/>, document.getElementById('root'));
+            1.React解析组件标签，
+            2.发现组件是使用函数定义的，随后调用该函数，将返回的虚拟DOM转为真实DOM
+             
+        */
+
+    </script>
+
+</body>
+
+</html>

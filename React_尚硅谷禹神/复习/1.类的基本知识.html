@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>title</title>
+    <script type="text/javascript">
+        // 创建一个person类
+        class Person{
+            // 构造器方法
+            constructor(name, age){
+                // 构造器中的this是谁？——类的实例对象
+                this.name = name;
+                this.age = age;
+            }
+            // 一般方法
+            speak(){
+                // speak 方法放在了哪里？——类的原型对象上
+                // 供实例使用
+                // 通过persopn实例调用speak时，speak中的this就是Person实例
+                console.log(`我叫${this.name}, 我的年龄是${this.age}`)
+            }
+        }
+        // 创建一个Student类继承自Person类
+        class Student extends Person{
+            constructor(name, age, grade){
+                super(name, age)
+                this.grade = grade
+            }
+            // 重写父类继承过来的speak方法
+            speak(){
+                console.log(`我叫${this.name}, 我的年龄是${this.age}，我的性别是${this.grade}`)
+            }
+            // speak 方法放在了哪里？——类的原型对象上供实例使用
+            // 
+            studay(){
+                console.log('我很努力的学习！')
+            }
+        }
+
+        class Car{
+            constructor(name, price, wheel){
+                this.name = name
+                this.price = price
+                this.wheel = wheel
+            }
+        }
+        const c1 = new Car('奔驰c63', 199)
+        console.log(c1)
+
+
+        const s1 = new Student('小张', 22, '男')
+        console.log(s1)
+        s1.speak()
+        
+
+        // 创建一个Person的实例对象
+        /*const p1 =  new Person('tom', 18)
+        const p2 =  new Person('jerry', 20)
+        console.log(p1)
+        console.log(p2)
+        p1.speak()
+        p2.speak()
+        p1.speak.call({a:1, b:2}) */
+
+
+    </script>
+
+</head>
+<body>
+    
+</body>
+</html>

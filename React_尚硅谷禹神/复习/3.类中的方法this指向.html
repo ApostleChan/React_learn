@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>state属性</title>
+    <!-- 加载 React。-->
+    <!-- 注意: 部署时，将 "development.js" 替换为 "production.min.js"。-->
+    <!-- 引入react核心库 -->
+    <script src="../js/react.min.js"></script>
+    <!-- 引入babel, 用于将jsx转为js -->
+    <script src="../js/reactDOM.min.js"></script>
+    <script src="../js/babel.min.js"></script>
+</head>
+
+<body>
+    <!-- 准备好一个容器 -->
+    <div id="root">
+        <button id="btn1">按钮1</button>
+        <button id="btn2">按钮2</button>
+        <button id="btn3">按钮3</button>
+    </div>
+
+    <script type="text/javascript">
+        class Person {
+            constructor(name, age) {
+                this.name = name;
+                this.age = age;
+            }
+            speak() {
+                // speak 方法放在了哪里？——类的原型对象上供实例使用
+                // 通过Person实例调用speak,speak中的this就是Person实例
+                console.log(this)
+            }
+        }
+
+        const p1 = new Person('tom', 21)
+        p1.speak() //通过实例调用speak方法
+    </script>
+
+</body>
+
+</html>

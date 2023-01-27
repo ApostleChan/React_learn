@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>state属性</title>
+    <!-- 加载 React。-->
+    <!-- 注意: 部署时，将 "development.js" 替换为 "production.min.js"。-->
+    <!-- 引入react核心库 -->
+    <script src="../js/react.min.js"></script>
+    <!-- 引入babel, 用于将jsx转为js -->
+    <script src="../js/reactDOM.min.js"></script>
+    <script src="../js/babel.min.js"></script>
+</head>
+
+<body>
+    <!-- 准备好一个容器 -->
+    <div id="root">
+
+    </div>
+
+    <script type="text/babel"> /*此处一定要写babel*/
+        // 1. 创建类式组件
+        class Weather extends React.Component {
+            // render是放在哪里的？——MyComponent的原型对象，供实例使用
+            // render中的this是谁？——MyComponent的实例对象
+            constructor(props) {
+                super(props)
+                this.state = {
+                    isHot: false,
+                    wind: '风',
+                }
+                this.changWeather = this.changWeather.bind(this)
+            }
+            render() {
+                return <h2 onClick={this.changWeather}>今天天气很{this.state.isHot ? '炎热' : '凉爽'}</h2>
+            }
+            changWeather() {
+                // changWeather放在了——weather的原型对象上，供实例使用
+                // 由于changWeather是作为onClick的回调，所以不是通过实例调用的，是直接调用
+                // 类中的方法默认开启了局部模式，所以changWeather中的this为undefined
+                const isHot = this.state.isHost
+                this.setState({ isHot: !isHot })
+
+            }
+        }
+        // 2. 渲染组件到页面
+        ReactDOM.render(<Weather />, document.getElementById('root'));
+
+        /*
+            执行了 ReactDOM.render(<MyComponent/>, document.getElementById('root'));
+            1.React解析组件标签，找到了MyComponent组件
+            2.发现组件是使用类定义的，随后new出来该类的实例，并通过该实力调用到原型
+            3.将render返回的虚拟DOM转为真实DOM，随后呈现在页面中
+
+        */
+
+    </script>
+
+</body>
+
+</html>
