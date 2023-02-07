@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>title</title>
+    <!-- 加载 React。-->
+    <!-- 注意: 部署时，将 "development.js" 替换为 "production.min.js"。-->
+    <!-- 引入react核心库 -->
+    <script src="../js/react.min.js"></script>
+    <!-- 引入babel, 用于将jsx转为js -->
+    <script src="../js/reactDOM.min.js"></script>
+    <script src="../js/babel.min.js"></script>
+</head>
+
+<body>
+<!-- 准备好一个容器 -->
+<div id="root">
+
+</div>
+
+<script type="text/babel"> /*此处一定要写babel*/
+// 通过表达式给标签属性赋值
+const element = <MyComponent foo={1 + 2}/>
+
+// 通过表达式定义子组件{map虽然是函数，但是它的返回值是JavaScript表达式}
+const todos = ['item1', 'item2', 'item3'];
+const element = (
+    <ul>
+        {todos.map(message => <Item key={message} message={message}/>)}
+    </ul>
+);
+
+let complete;
+const element = (
+    <div>
+        {
+            complete && <CompletedList/>
+        }
+    </div>
+)
+
+// JSX语法
+const element = (<div className='foo'>Hello, React</div>)
+
+// 转换后
+const element = React.createElement('div', {className:'foo'}, 'Hello, React')
+
+// 1.创建虚拟DOM
+const VDOM = <h1>Hello react</h1>;
+// 2. 渲染虚拟DOM到页面
+ReactDOM.render(VDOM, document.getElementById('root'));
+</script>
+
+</body>
+
+</html>
