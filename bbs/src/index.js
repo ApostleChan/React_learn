@@ -1,5 +1,7 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import PostList from "./PostList";
+import {createRoot} from "react-dom/client";
 
-ReactDOM.render(<PostList/>, document.getElementById("root"))
+const container = document.getElementById("root")
+const root = createRoot(container)
+root.render(<PostList/>)
