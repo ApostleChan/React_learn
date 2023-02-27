@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';    // 构建HTML(WebApp)的核心
 import App from "./App";
 import DemoOne from "./Views/DemoOne";
 import Dialog from "./Views/Dialog";
+import Vote from './Views/Vote';
 
 // 获取页面中的#root的容器，作为“根”容器，注意：根容器不能使用HTML/BODY元素
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -20,5 +21,7 @@ root.render(
 
         <Dialog title='友情提示' content="好好学习"></Dialog>
 
+        
+        <Vote title='React很简单'/>
     </>
 );
